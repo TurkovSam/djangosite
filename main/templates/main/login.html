@@ -1,0 +1,28 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/style_authorization.css' %}">
+</head>
+<div class="login-page">
+  <div class="login-form-container">
+    <div class="login-form">
+      <h2>Вход</h2>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.email }}
+        {{ form.password }}
+        {{ form.captcha }}
+        <button type="submit">Войти</button>
+      </form>
+      <div class="register-link">
+        Нет аккаунта? <a href="{% url 'register' %}">Зарегистрироваться</a>
+      </div>
+    </div>
+  </div>
+  <div class="login-image-container">
+    <img src="{% static 'img/login.jpg' %}" alt="Login Image">
+  </div>
+</div>
+{% endblock %}
